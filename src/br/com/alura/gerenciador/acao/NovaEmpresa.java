@@ -1,23 +1,24 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import br.com.alura.gerenciador.modelo.Banco;
+import br.com.alura.gerenciador.modelo.Empresa;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+public class NovaEmpresa implements Acao {
+	public String executa(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+				
 		System.out.println("Cadastrando nova empresa!");
-		String nomeEmpresa = request.getParameter("nome");		
+		
+		String nomeEmpresa = request.getParameter("nome");	
+		String cpfEmpresa = request.getParameter("cpf");		
 		String dataEmpresa = request.getParameter("data"); 
 		
 		Date dataAbertura = null;		
@@ -30,12 +31,15 @@ public class NovaEmpresaServlet extends HttpServlet {
 		
 		Empresa empresa = new Empresa();
 		empresa.setNome(nomeEmpresa);
+		empresa.setCpf(cpfEmpresa);
 		empresa.setDataAbertura(dataAbertura);
 		
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
+		
+		request.setAttribute("empresa", empresa.getNome());
 
-		response.sendRedirect("listaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresa";
 		
 	}
 }

@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,10 +11,12 @@ public class Banco {
 	static {
 		Empresa empresa = new Empresa();
 		empresa.setNome("Alura");
+		empresa.setCpf("333.333.333-33");
 		empresa.getDataAbertura();
 		empresa.setId(chaveSequencial++);
 		Empresa empresa2 = new Empresa();
 		empresa2.setNome("Caelum");
+		empresa2.setCpf("333.333.333-33");
 		empresa2.getDataAbertura();
 		empresa2.setId(chaveSequencial++);
 		lista.add(empresa);

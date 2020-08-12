@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.modelo;
 
 import java.util.Date;
 
@@ -6,6 +6,7 @@ public class Empresa {
 	
 	private Integer id;
 	private String nome;
+	private String cpf;
 	private Date dataAbertura = new Date();
 	
 	public Integer getId() {
@@ -26,7 +27,16 @@ public class Empresa {
 	public void setDataAbertura(Date dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 	
-	
+	@Override
+	public String toString() {
+		return getNome().toString() + getCpf().toString() + getDataAbertura().toString();
+	}
 	
 }
