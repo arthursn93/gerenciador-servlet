@@ -7,6 +7,8 @@
 <title>Cadastrar Empresa</title>
 </head>
 <body>	
+	<c:import url="logout-parcial.jsp"/>
+
 	<form action="${linkEntradaServlet}" method="post">
 		<input type="text" name="nome" placeholder="Nome da Empresa"/>
 		<input type="text" name="cpf" placeholder="CPF ou CNPJ"/>

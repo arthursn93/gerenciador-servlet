@@ -9,6 +9,8 @@
 <title>Editar Empresa</title>
 </head>
 <body>	
+	<c:import url="logout-parcial.jsp"/>
+
 	<form action="${linkEntradaServlet}" method="post">
 		<input type="text" name="nome" value="${empresa.nome}"/>
 		<input type="text" name="cpf" value="${empresa.cpf}"/>
